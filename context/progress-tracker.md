@@ -1,37 +1,50 @@
 # Progress Tracker
 
-Update this file after every meaningful implementation
-change.
+Update this file after every meaningful implementation change.
 
 ## Current Phase
 
-- [e.g. Not started / In progress / Complete]
+- Complete: Phase 1 (Design System & UI Primitive Components)
 
 ## Current Goal
 
-- [What you are building right now]
+- Ready for next feature / phase.
 
 ## Completed
 
-- None yet.
+- Cleaned boilerplate (globals.css, public SVGs, minimal page.tsx).
+- Installed and configured `shadcn/ui` with Tailwind CSS v4 and `components.json`.
+- Installed `lucide-react`, `clsx`, `tailwind-merge`, and `class-variance-authority`.
+- Created `lib/utils.ts` with reusable `cn()` helper function.
+- Added shadcn components without modifying foundation code:
+  - `components/ui/button.tsx`
+  - `components/ui/card.tsx`
+  - `components/ui/dialog.tsx`
+  - `components/ui/input.tsx`
+  - `components/ui/tabs.tsx`
+  - `components/ui/textarea.tsx`
+  - `components/ui/scroll-area.tsx`
+- Configured dark-only design tokens in `app/globals.css` with CSS custom properties and `@theme inline` per `context/ui-context.md`.
+- Updated `app/layout.tsx` to apply `dark` class, `bg-base`, `text-copy-primary`, and typography variables (`--font-geist-sans`, `--font-geist-mono`).
+- Verified all components import cleanly, `cn()` merges classes properly, and `next build` / `eslint` pass with 0 errors.
 
 ## In Progress
 
-- None yet.
+- None.
 
 ## Next Up
 
-- [First unit to build]
+- Canvas & real-time collaboration foundations (Liveblocks + React Flow).
 
 ## Open Questions
 
-- [Any unresolved product or technical decisions]
+- None.
 
 ## Architecture Decisions
 
-- [Decisions made that affect the system design or
-  data model — include why the decision was made]
+- Configured dark-only design tokens in `app/globals.css` using CSS custom properties and `@theme inline` matching `context/ui-context.md`.
+- Foundation components in `components/ui/*` kept unmodified per protected foundation component rules.
 
 ## Session Notes
 
-- [Context needed to resume work in the next session]
+- Phase 1 (01-design-system.md) completed and verified end-to-end.
