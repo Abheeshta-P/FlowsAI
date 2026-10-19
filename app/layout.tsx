@@ -15,8 +15,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Flows AI",
+  title: "Flows AI — Collaborative System Architecture",
   description: "Real-time collaborative system design workspace",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({

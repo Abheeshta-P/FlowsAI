@@ -33,6 +33,10 @@ Update this file after every meaningful implementation change.
 - Created `proxy.ts` at the root protecting all routes by default using `clerkMiddleware` and `createRouteMatcher` with public sign-in and sign-up paths.
 - Wrapped root layout with `ClerkProvider` configured with `@clerk/ui/themes` `dark` and CSS variable overrides (no hardcoded colors).
 - Implemented responsive two-panel `AuthShell` and auth routes at `/sign-in/[[...sign-in]]` and `/sign-up/[[...sign-up]]` with Suspense streaming boundaries.
+- Designed geometric brand logo mark (`components/brand/logo.tsx`) representing architectural flow nodes shaped into an "F" with an AI accent node.
+- Generated vector SVG favicon at `app/icon.svg` and `public/icon.svg` with high-contrast container for light and dark browser tabs.
+- Enhanced `AuthShell` with the brand logo, live platform status badge, responsive mobile header, and elevated capability cards with Lucide icons (`Sparkles`, `Users`, `Layers`, `FileCode2`).
+- Integrated `Logo` emblem into `EditorNavbar` beside the sidebar toggle.
 - Updated `/` to redirect authenticated users to `/editor` and unauthenticated users to `/sign-in`.
 - Created `/editor` layout and page protected by `auth.protect()`.
 - Added Clerk's built-in `UserButton` to `EditorNavbar` right section for account management and logout.
