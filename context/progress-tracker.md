@@ -4,7 +4,7 @@ Update this file after every meaningful implementation change.
 
 ## Current Phase
 
-- Complete: Phase 1 (Design System & UI Primitive Components)
+- Complete: Phase 2 (Base Editor Chrome - Navbar & Project Sidebar Integration)
 
 ## Current Goal
 
@@ -26,7 +26,12 @@ Update this file after every meaningful implementation change.
   - `components/ui/scroll-area.tsx`
 - Configured dark-only design tokens in `app/globals.css` with CSS custom properties and `@theme inline` per `context/ui-context.md`.
 - Updated `app/layout.tsx` to apply `dark` class, `bg-base`, `text-copy-primary`, and typography variables (`--font-geist-sans`, `--font-geist-mono`).
-- Verified all components import cleanly, `cn()` merges classes properly, and `next build` / `eslint` pass with 0 errors.
+- Created `components/editor/editor-navbar.tsx` with fixed height, left/center/right sections, sidebar toggle button with dynamic `PanelLeftOpen`/`PanelLeftClose` icons, dark background and subtle border.
+- Created `components/editor/project-sidebar.tsx` floating shell above canvas, slide transition from left without pushing page content, `isOpen` and `onClose` props, header with title and close button, shadcn `Tabs` ("My Projects" and "Shared") with empty states, and full-width `New Project` button with `Plus` icon.
+- Created `components/editor/editor-dialog.tsx` implementing reusable dialog pattern with title, description, and footer actions using design system tokens.
+- Created `components/editor/editor-layout.tsx` wiring up sidebar open/close state and composing `EditorNavbar`, `ProjectSidebar`, and main content viewport.
+- Integrated `EditorLayout` into `app/layout.tsx` and adapted `app/page.tsx` within the full-viewport canvas layout.
+- Verified TypeScript, ESLint, and Next.js production build pass cleanly with 0 errors.
 
 ## In Progress
 
@@ -42,9 +47,10 @@ Update this file after every meaningful implementation change.
 
 ## Architecture Decisions
 
-- Configured dark-only design tokens in `app/globals.css` using CSS custom properties and `@theme inline` matching `context/ui-context.md`.
-- Foundation components in `components/ui/*` kept unmodified per protected foundation component rules.
+- Floating sidebar shell overlay pattern ensures canvas state and layout remain unperturbed by sidebar open/close.
+- Strict token usage: `bg-surface`, `bg-elevated`, `border-surface-border`, `border-border-subtle`, `text-copy-primary`, `text-copy-muted`.
+- `RootLayout` remains a React Server Component for metadata and fonts, delegating interactive chrome state to client `EditorLayout`.
 
 ## Session Notes
 
-- Phase 1 (01-design-system.md) completed and verified end-to-end.
+- Base editor chrome components are integrated into the application layout and verified end-to-end.
