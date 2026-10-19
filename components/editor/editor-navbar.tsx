@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { UserButton } from "@clerk/nextjs";
 import { PanelLeftClose, PanelLeftOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -32,7 +33,7 @@ export function EditorNavbar({
           size="icon-sm"
           onClick={onToggleSidebar}
           aria-label={isSidebarOpen ? "Close sidebar" : "Open sidebar"}
-          className="text-copy-muted hover:bg-subtle hover:text-copy-primary"
+          className="cursor-pointer text-copy-muted hover:bg-subtle hover:text-copy-primary"
         >
           {isSidebarOpen ? (
             <PanelLeftClose className="h-4 w-4" />
@@ -48,9 +49,9 @@ export function EditorNavbar({
         {/* Intentionally minimal placeholder for active design or document title */}
       </div>
 
-      {/* Right section: stays empty for now */}
+      {/* Right section: user profile and logout */}
       <div className="flex items-center gap-2">
-        {/* Reserved for future user profile, collaboration status, or share actions */}
+        <UserButton />
       </div>
     </header>
   );

@@ -4,7 +4,7 @@ Update this file after every meaningful implementation change.
 
 ## Current Phase
 
-- Complete: Phase 2 (Base Editor Chrome - Navbar & Project Sidebar Integration)
+- Complete: Phase 3 (Authentication with Clerk)
 
 ## Current Goal
 
@@ -30,8 +30,13 @@ Update this file after every meaningful implementation change.
 - Created `components/editor/project-sidebar.tsx` floating shell above canvas, slide transition from left without pushing page content, `isOpen` and `onClose` props, header with title and close button, shadcn `Tabs` ("My Projects" and "Shared") with empty states, and full-width `New Project` button with `Plus` icon.
 - Created `components/editor/editor-dialog.tsx` implementing reusable dialog pattern with title, description, and footer actions using design system tokens.
 - Created `components/editor/editor-layout.tsx` wiring up sidebar open/close state and composing `EditorNavbar`, `ProjectSidebar`, and main content viewport.
-- Integrated `EditorLayout` into `app/layout.tsx` and adapted `app/page.tsx` within the full-viewport canvas layout.
-- Verified TypeScript, ESLint, and Next.js production build pass cleanly with 0 errors.
+- Created `proxy.ts` at the root protecting all routes by default using `clerkMiddleware` and `createRouteMatcher` with public sign-in and sign-up paths.
+- Wrapped root layout with `ClerkProvider` configured with `@clerk/ui/themes` `dark` and CSS variable overrides (no hardcoded colors).
+- Implemented responsive two-panel `AuthShell` and auth routes at `/sign-in/[[...sign-in]]` and `/sign-up/[[...sign-up]]` with Suspense streaming boundaries.
+- Updated `/` to redirect authenticated users to `/editor` and unauthenticated users to `/sign-in`.
+- Created `/editor` layout and page protected by `auth.protect()`.
+- Added Clerk's built-in `UserButton` to `EditorNavbar` right section for account management and logout.
+- Verified TypeScript, ESLint, and Next.js production build pass with 0 errors.
 
 ## In Progress
 
@@ -47,10 +52,11 @@ Update this file after every meaningful implementation change.
 
 ## Architecture Decisions
 
-- Floating sidebar shell overlay pattern ensures canvas state and layout remain unperturbed by sidebar open/close.
-- Strict token usage: `bg-surface`, `bg-elevated`, `border-surface-border`, `border-border-subtle`, `text-copy-primary`, `text-copy-muted`.
-- `RootLayout` remains a React Server Component for metadata and fonts, delegating interactive chrome state to client `EditorLayout`.
+- `proxy.ts` placed at project root per Next.js 16 conventions; avoids deprecated `createRouteMatcher` by using native pathname matching against env-configured public auth paths, protecting all other routes by default with `auth.protect()`.
+- Root layout provides `ClerkProvider` with theme tokens mapping to existing custom properties (`--bg-surface`, `--accent-primary`, etc.).
+- Editor chrome (`EditorLayout`) is scoped to `/editor` so auth pages render cleanly without editor shell chrome.
+- Primary buttons mapped to high-contrast `--text-primary` (`#f0f0f4`) with explicit `cursor: pointer` across all button and tab trigger components.
 
 ## Session Notes
 
-- Base editor chrome components are integrated into the application layout and verified end-to-end.
+- Phase 3 (03-auth.md) completed and verified end-to-end.
