@@ -86,7 +86,7 @@
   --card-foreground: var(--text-primary);
   --popover: var(--bg-elevated);
   --popover-foreground: var(--text-primary);
-  --primary: var(--accent-primary);
+  --primary: var(--text-primary);
   --primary-foreground: #080809;
   --secondary: var(--bg-elevated);
   --secondary-foreground: var(--text-primary);
@@ -136,7 +136,7 @@
   --card-foreground: var(--text-primary);
   --popover: var(--bg-elevated);
   --popover-foreground: var(--text-primary);
-  --primary: var(--accent-primary);
+  --primary: var(--text-primary);
   --primary-foreground: #080809;
   --secondary: var(--bg-elevated);
   --secondary-foreground: var(--text-primary);
@@ -171,5 +171,27 @@
   body {
     background-color: var(--bg-base);
     color: var(--text-primary);
+  }
+
+  button,
+  [role="button"] {
+    cursor: pointer;
+  }
+
+  /* Clerk UserButton and Avatar text visibility */
+  .cl-avatarBox,
+  .cl-userButtonAvatarBox {
+    color: var(--text-primary) !important;
+    background-color: var(--bg-elevated) !important;
+    border: 1px solid var(--border-default) !important;
+  }
+
+  .cl-avatarBox span,
+  .cl-userButtonAvatarBox span,
+  .cl-avatarBox p,
+  .cl-userButtonAvatarBox p {
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    opacity: 1 !important;
   }
 }

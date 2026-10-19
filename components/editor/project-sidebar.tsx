@@ -48,8 +48,8 @@ export function ProjectSidebar({
       {/* Tabs */}
       <Tabs defaultValue="my-projects" className="flex flex-1 flex-col overflow-hidden px-3 pt-3">
         <TabsList className="grid w-full grid-cols-2 bg-subtle">
-          <TabsTrigger value="my-projects">My Projects</TabsTrigger>
-          <TabsTrigger value="shared">Shared</TabsTrigger>
+          <TabsTrigger value="my-projects" className="cursor-pointer">My Projects</TabsTrigger>
+          <TabsTrigger value="shared" className="cursor-pointer">Shared</TabsTrigger>
         </TabsList>
 
         <TabsContent value="my-projects" className="flex flex-1 flex-col items-center justify-center p-6 text-center outline-none">
@@ -72,10 +72,10 @@ export function ProjectSidebar({
       {/* Footer action */}
       <div className="border-t border-surface-border p-3">
         <Button
-          className="w-full gap-2 rounded-xl"
+          className="h-10 w-full cursor-pointer gap-2 rounded-xl bg-primary text-primary-foreground text-sm font-semibold shadow-sm transition-all hover:opacity-90 active:scale-[0.99]"
           onClick={onNewProject}
         >
-          <Plus className="h-4 w-4" />
+          <Plus className="h-4 w-4 stroke-[2.5]" />
           New Project
         </Button>
       </div>

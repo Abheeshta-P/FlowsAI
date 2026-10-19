@@ -1,8 +1,14 @@
-export default function Home() {
-  return (
-    <div className="flex flex-1 items-center justify-center">
-      <div>
-        Flows AI</div>
-    </div>
-  );
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
+
+export const instant = false;
+
+export default async function RootPage() {
+  const { userId } = await auth();
+
+  if (userId) {
+    redirect("/editor");
+  }
+
+  redirect(process.env.NEXT_PUBLIC_CLERK_SIGN_IN_URL || "/sign-in");
 }
